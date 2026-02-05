@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SilverCar | Mecânica & Performance</title>
+
+<style>
+/* CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --preto: #000000;
+    --preto-suave: #121212;
+    --vermelho: #e63946;
+    --branco: #ffffff;
+    --prata: #ffffff;
+}
+
+body {
+    background-color: var(--preto);
+    color: var(--branco);
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+/* ================= INTRO ================= */
+#intro {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 1.2s ease;
+}
+
+.logo-intro {
+    position: absolute;
+    width: 220px;
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.logo-intro.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.logo-intro.fade-out {
+    opacity: 0;
+    transform: scale(1.05);
+}
+
+/* ================= HEADER ================= */
+header {
+    background-color: var(--preto-suave);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--prata);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.logo span {
+    color: var(--vermelho);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: var(--prata);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.nav-links a:hover {
+    color: var(--vermelho);
+}
+
+.btn-header {
+    background: transparent;
+    color: var(--branco);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid var(--vermelho);
+    transition: .3s;
+}
+
+.btn-header:hover {
+    background: var(--vermelho);
+    color: var(--branco);
+}
+
+
+/* BOTÃO MOBILE */
+.btn-mobile {
+    display: none;
+}
+
+/* ================= SEÇÕES ================= */
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 10% 50px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+.container-text {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.container-text h2 {
+    font-size: 3.5rem;
+    border-left: 8px solid var(--vermelho);
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.container-text p {
+    font-size: 1.2rem;
+}
+
+/* TITULO COM LOGO */
+.titulo-com-logo {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.titulo-com-logo img {
+    width: 110px;
+}
+
+/* FORMULÁRIO */
+.form-container {
+    background: rgba(20,20,20,0.9);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 550px;
+    border: 2px solid var(--vermelho);
+    z-index: 2;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #222;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.btn-submit {
+    background: var(--vermelho);
+    color: #fff;
+    border: none;
+    padding: 18px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 900px) {
+    .nav-links {
+        display: none;
+    }
+
+    .btn-mobile {
+        display: inline-block;
+        background: var(--vermelho);
+        color: #fff;
+        font-size: 12px;
+        padding: 10px 14px;
+    }
+
+    .container-text h2 {
+        font-size: 2.2rem;
+    }
+
+    section {
+        background-attachment: scroll;
+    }
+}
+</style>
+</head>
+
+<body class="loading">
+
+<!-- INTRO -->
+<div id="intro">
+    <img src="mecanica.png" class="logo-intro active">
+    <img src="preparações.png" class="logo-intro">
+    <img src="industria.png" class="logo-intro">
+</div>
+
+<header>
+    <div class="logo">SILVER<span>CAR</span></div>
+
+    <nav class="nav-links">
+        <a href="#mecanica">Mecânica</a>
+        <a href="#preparacao">Preparação</a>
+        <a href="#industrial">Industrial</a>
+        <a href="#contato" class="btn-header">Orçamento</a>
+    </nav>
+
+    <!-- BOTÃO MOBILE -->
+    <a href="#contato" class="btn-header btn-mobile">Solicitar Orçamento</a>
+</header>
+
+<section id="home" style="background-image:url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=2000');">
+    <div class="container-text">
+        <h2>SilverCar Mecânica Especializada</h2>
+        <p>Engenharia, força e performance em cada projeto.</p>
+    </div>
+</section>
+
+<section id="mecanica" style="background-image:url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=2000');">
+    <div class="container-text">
+        <h2 class="titulo-com-logo">
+            <img src="mecanica.png"> Mecânica Geral
+        </h2>
+        <p>Manutenção e reparos completos para garantir segurança, desempenho e durabilidade do seu veículo, com diagnóstico preciso e serviço de qualidade.</p>
+    </div>
+</section>
+
+<section id="preparacao" style="background-image:url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=2000');">
+    <div class="container-text">
+        <h2 class="titulo-com-logo">
+            <img src="preparações.png"> Preparação
+        </h2>
+        <p>Ajustes e melhorias focadas em performance, potência e dirigibilidade, sempre com precisão técnica e respeito aos limites mecânicos.</p>
+    </div>
+</section>
+
+<section id="industrial" style="background-image:url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2000');">
+    <div class="container-text">
+        <h2 class="titulo-com-logo">
+            <img src="industria.png"> Mecânica Industrial
+        </h2>
+        <p>Manutenção e suporte técnico em máquinas e equipamentos, focados em eficiência, confiabilidade e redução de paradas operacionais.</p>
+    </div>
+</section>
+
+<section id="contato" style="background-image:url('https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?q=80&w=2000');">
+    <div class="form-container">
+        <h2>Solicite seu Orçamento</h2>
+        <form id="formSilver">
+            <input type="text" id="nome" placeholder="Seu Nome" required>
+            <input type="text" id="servico" placeholder="Serviço" required>
+            <input type="tel" id="fone" placeholder="WhatsApp" required>
+            <textarea id="obs" placeholder="Detalhes"></textarea>
+            <button class="btn-submit">Enviar para WhatsApp</button>
+        </form>
+    </div>
+</section>
+
+<script>
+/* INTRO */
+const logos = document.querySelectorAll('.logo-intro');
+const intro = document.getElementById('intro');
+let i = 0;
+
+function introAnim() {
+    if (i > 0) {
+        logos[i-1].classList.remove('active');
+        logos[i-1].classList.add('fade-out');
+    }
+    if (i < logos.length) {
+        logos[i].classList.add('active');
+    }
+    setTimeout(() => {
+        i++;
+        if (i < logos.length) {
+            introAnim();
+        } else {
+            setTimeout(() => {
+                intro.style.opacity = '0';
+                setTimeout(() => {
+                    intro.remove();
+                    document.body.classList.remove('loading');
+                }, 1200);
+            }, 300);
+        }
+    }, 900);
+}
+window.onload = introAnim;
+
+/* WHATSAPP */
+document.getElementById('formSilver').onsubmit = function(e) {
+    e.preventDefault();
+    const msg =
+        `*SILVERCAR ORÇAMENTO*%0A` +
+        `Nome: ${encodeURIComponent(nome.value)}%0A` +
+        `Serviço: ${encodeURIComponent(servico.value)}%0A` +
+        `WhatsApp: ${encodeURIComponent(fone.value)}%0A` +
+        `Detalhes: ${encodeURIComponent(obs.value)}`;
+    window.open(`https://wa.me/554298619163?text=${msg}`, '_blank');
+};
+</script>
+
+</body>
+</html>
